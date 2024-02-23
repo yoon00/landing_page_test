@@ -54,7 +54,7 @@ $(window).on("touchmove", function (e) {
   const deltaY = e.originalEvent.touches[0].clientY - startY;
   const scrollAmount = 100; // 스크롤 감도 조절
 
-  if (deltaY > 5) {
+  if (deltaY > 0) {
     idx = Math.max(idx - 1, 0);
   } else {
     idx = Math.min(idx + 1, inner.length - 1);
