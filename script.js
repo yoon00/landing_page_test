@@ -29,7 +29,7 @@ window.addEventListener("scroll", function () {
 });
 
 let idx = 0;
-let startY, startX, endX;
+let startX, startY;
 let isScrolling = false;
 
 const select = document.querySelector(".background");
@@ -44,11 +44,11 @@ $(window).on("touchmove", function (e) {
   if (isScrolling) return; // 이미 스크롤 중이면 무시
   isScrolling = true;
 
-  const deltaY = e.originalEvent.touches[0].clientY - startY;
   const deltaX = e.originalEvent.touches[0].clientX - startX;
+  const deltaY = e.originalEvent.touches[0].clientY - startY;
   const scrollAmount = 100; // 스크롤 감도 조절
 
-  if (idx == 2 && (startX - deltaX > 40 || deltaX - startX > 40)) {
+  if (startX - deltaX > 40 || deltaX - startX > 40) {
     return;
   }
 
@@ -62,14 +62,14 @@ $(window).on("touchmove", function (e) {
     .stop()
     .animate(
       {
-        scrollTop: $(inner[idx]).offset().top,
-        // 다음 페이지의 시작 위치로 스크롤
+        scrollTop: $(inner[idx]).offset().top, // 다음 페이지의 시작 위치로 스크롤
       },
       600,
       function () {
         isScrolling = false;
       }
     );
+
   // 스크롤 감쇠
   setTimeout(function () {
     isScrolling = false;
