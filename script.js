@@ -49,29 +49,39 @@ $(window).on("touchmove", function (e) {
   const scrollAmount = 100; // 스크롤 감도 조절
 
   // if (startX - deltaX < 30 || deltaX - startX < 30) {
-  if (deltaY > 0.1) {
+  if (deltaY > 0) {
     idx = Math.max(idx - 1, 0);
-  } else if (deltaY < -0.1) {
-    idx = Math.min(idx + 1, inner.length - 1);
   } else {
-    idx = idx;
+    idx = Math.min(idx + 1, inner.length - 1);
   }
 
-  $("html,body")
-    .stop()
-    .animate(
-      {
-        scrollTop: $(inner[idx]).offset().top, // 다음 페이지의 시작 위치로 스크롤
-      },
-      600,
-      function () {
-        isScrolling = false;
-      }
-    );
-  // }
+  debounce(() => {
+    $("html,body")
+      .stop()
+      .animate(
+        {
+          scrollTop: $(inner[idx]).offset().top, // 다음 페이지의 시작 위치로 스크롤
+        },
+        600,
+        function () {
+          isScrolling = false;
+        }
+      );
+  }, 600);
 
-  // 스크롤 감쇠
-  setTimeout(function () {
-    isScrolling = false;
-  }, 100);
+  startX = e.originalEvent.touches[0].scrollX;
+  startY = e.originalEvent.touches[0].scrollY;
 });
+
+// 디바운싱 함수 정의
+function debounce(func, delay) {
+  let timeout;
+  return function () {
+    const context = this;
+    const args = arguments;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      func.apply(context, args);
+    }, delay);
+  };
+}
