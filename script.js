@@ -53,7 +53,7 @@ $(window).on("touchmove", function (e) {
   } else {
     idx = Math.min(idx + 1, inner.length - 1);
   }
-  if (startX - deltaX < 50 || deltaX - startX < 50) {
+  if (startX - deltaX < 30 || deltaX - startX < 30) {
     $("html,body")
       .stop()
       .animate(
