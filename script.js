@@ -40,23 +40,20 @@ $(window).on("touchstart", function (e) {
   startY = e.originalEvent.touches[0].clientY;
 });
 
-$(window).on("touchend", function (e) {
-  endX = e.originalEvent.ChangedTouches[0].clientX;
-  if (startX - endX > 50 || endX - startX > 50) {
-    $("body").on("touchmove", function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-      return false;
-    });
-  }
-});
-
 $(window).on("touchmove", function (e) {
   if (isScrolling) return; // 이미 스크롤 중이면 무시
   isScrolling = true;
 
   const deltaY = e.originalEvent.touches[0].clientY - startY;
+  const deltaX = e.originalEvent.touches[0].clientX - startX;
   const scrollAmount = 100; // 스크롤 감도 조절
+
+  if (startX - deltaX > 50 || deltaX - startX > 50) {
+    $("body").on("touchmove", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    });
+  }
 
   if (deltaY > 0) {
     idx = Math.max(idx - 1, 0);
