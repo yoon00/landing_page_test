@@ -43,7 +43,11 @@ $(window).on("touchstart", function (e) {
 $(window).on("touchend", function (e) {
   endX = e.originalEvent.ChangedTouches[0].clientX;
   if (startX - endX > 50 || endX - startX > 50) {
-    isScrolling = false;
+    $("body").on("touchmove", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      return false;
+    });
   }
 });
 
