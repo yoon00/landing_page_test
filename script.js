@@ -49,9 +49,9 @@ $(window).on("touchmove", function (e) {
   const scrollAmount = 100; // 스크롤 감도 조절
 
   // if (startX - deltaX < 30 || deltaX - startX < 30) {
-  if (deltaY > 1) {
+  if (deltaY > 0.1) {
     idx = Math.max(idx - 1, 0);
-  } else if (deltaY < -1) {
+  } else if (deltaY < -0.1) {
     idx = Math.min(idx + 1, inner.length - 1);
   } else {
     idx = idx;
