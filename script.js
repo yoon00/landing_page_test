@@ -49,10 +49,7 @@ $(window).on("touchmove", function (e) {
   const scrollAmount = 100; // 스크롤 감도 조절
 
   if (startX - deltaX > 50 || deltaX - startX > 50) {
-    $("body").on("touchmove", function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-    });
+    isScrolling = false;
   }
 
   if (deltaY > 0) {
@@ -60,11 +57,13 @@ $(window).on("touchmove", function (e) {
   } else {
     idx = Math.min(idx + 1, inner.length - 1);
   }
+
   $("html,body")
     .stop()
     .animate(
       {
-        scrollTop: $(inner[idx]).offset().top, // 다음 페이지의 시작 위치로 스크롤
+        scrollTop: $(inner[idx]).offset().top,
+        // 다음 페이지의 시작 위치로 스크롤
       },
       600,
       function () {
