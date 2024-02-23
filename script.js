@@ -36,19 +36,15 @@ const select = document.querySelector(".background");
 const inner = select.querySelectorAll(".page1, .page2, .page3, .page4");
 
 $(window).on("touchstart", function (e) {
-  startX = e.originalEvent.touches[0].clientX;
+  startX = e.originalEvent.touches[0].screenX;
   startY = e.originalEvent.touches[0].clientY;
-});
-
-$(window).on("touchend", function (e) {
-  endX = e.originalEvent.touches[0].clientX;
 });
 
 $(window).on("touchmove", function (e) {
   if (isScrolling) return; // 이미 스크롤 중이면 무시
   isScrolling = true;
 
-  const deltaX = e.originalEvent.touches[0].clientX - endX;
+  const deltaX = e.originalEvent.touches[0].screenX - startX;
   const deltaY = e.originalEvent.touches[0].clientY - startY;
   const scrollAmount = 100; // 스크롤 감도 조절
 
