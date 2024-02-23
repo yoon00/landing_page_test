@@ -60,19 +60,17 @@ $(window).on("touchend", function (e) {
   } else {
     idx = Math.min(idx + 1, inner.length - 1);
   }
-  if (isScrolling) {
-    $("html,body")
-      .stop()
-      .animate(
-        {
-          scrollTop: $(inner[idx]).offset().top, // 다음 페이지의 시작 위치로 스크롤
-        },
-        600,
-        function () {
-          isScrolling = false;
-        }
-      );
-  }
+  $("html,body")
+    .stop()
+    .animate(
+      {
+        scrollTop: $(inner[idx]).offset().top, // 다음 페이지의 시작 위치로 스크롤
+      },
+      600,
+      function () {
+        isScrolling = false;
+      }
+    );
   // 스크롤 감쇠
   setTimeout(function () {
     isScrolling = false;
