@@ -42,7 +42,7 @@ $(window).on("touchstart", function (e) {
 
 $(window).on("touchend", function (e) {
   endX = e.originalEvent.ChangedTouches[0].clientX;
-  if (startX - endX > 50 || endX - startX > 50) {
+  if (startX - endX > 10 || endX - startX > 10) {
     isScrolling = false;
   }
 });
@@ -52,7 +52,7 @@ $(window).on("touchmove", function (e) {
   isScrolling = true;
 
   const deltaY = e.originalEvent.touches[0].clientY - startY;
-  const scrollAmount = 150; // 스크롤 감도 조절
+  const scrollAmount = 75; // 스크롤 감도 조절
 
   if (deltaY > 0) {
     idx = Math.max(idx - 1, 0);
