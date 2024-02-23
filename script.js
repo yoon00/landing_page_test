@@ -29,7 +29,7 @@ window.addEventListener("scroll", function () {
 });
 
 let idx = 0;
-let startX, startY;
+let startX, startY, endX;
 let isScrolling = false;
 
 const select = document.querySelector(".background");
@@ -40,16 +40,19 @@ $(window).on("touchstart", function (e) {
   startY = e.originalEvent.touches[0].clientY;
 });
 
+$(window).on("touchend", function (e) {
+  endX = e.originalEvent.touches[0].clientX;
+});
+
 $(window).on("touchmove", function (e) {
   if (isScrolling) return; // 이미 스크롤 중이면 무시
   isScrolling = true;
 
-  const deltaX = e.originalEvent.touches[0].clientX - startX;
+  const deltaX = e.originalEvent.touches[0].clientX - endX;
   const deltaY = e.originalEvent.touches[0].clientY - startY;
   const scrollAmount = 100; // 스크롤 감도 조절
 
   if (startX - deltaX > 100 || deltaX - startX > 100) {
-    isScrolling = false;
     return;
   }
 
