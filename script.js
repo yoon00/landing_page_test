@@ -47,8 +47,9 @@ $(window).on("touchmove", function (e) {
   const deltaY = e.originalEvent.touches[0].clientY - startY;
   const deltaX = e.originalEvent.touches[0].clientX - startX;
   const scrollAmount = 100; // 스크롤 감도 조절
-
-  if (startX - deltaX > 50 || deltaX - startX > 50) {
+  console.log(startX);
+  console.log(deltaX);
+  if (startX - deltaX > 100 || deltaX - startX > 100) {
     isScrolling = false;
   }
 
