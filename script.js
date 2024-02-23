@@ -40,19 +40,18 @@ $(window).on("touchstart", function (e) {
   startY = e.originalEvent.touches[0].clientY;
 });
 
-$(window).on("touchmove", function (e) {
-  if (isScrolling) return; // 이미 스크롤 중이면 무시
-  isScrolling = true;
-});
-
 $(window).on("touchend", function (e) {
   endX = e.originalEvent.ChangedTouches[0].clientX;
-  endY = e.originalEvent.ChangedTouches[0].clientY;
   if (startX - endX > 50 || endX - startX > 50) {
     isScrolling = false;
   }
+});
 
-  const deltaY = endY - startY;
+$(window).on("touchmove", function (e) {
+  if (isScrolling) return; // 이미 스크롤 중이면 무시
+  isScrolling = true;
+
+  const deltaY = e.originalEvent.touches[0].clientY - startY;
   const scrollAmount = 150; // 스크롤 감도 조절
 
   if (deltaY > 0) {
