@@ -36,7 +36,7 @@ const select = document.querySelector(".background");
 const inner = select.querySelectorAll(".page1, .page2, .page3, .page4");
 
 $(window).on("touchstart", function (e) {
-  startX = e.originalEvent.touches[0].screenX;
+  startX = e.originalEvent.touches[0].clientX;
   startY = e.originalEvent.touches[0].clientY;
 });
 
@@ -44,31 +44,28 @@ $(window).on("touchmove", function (e) {
   if (isScrolling) return; // 이미 스크롤 중이면 무시
   isScrolling = true;
 
-  const deltaX = e.originalEvent.touches[0].screenX - startX;
+  const deltaX = e.originalEvent.touches[0].clientX - startX;
   const deltaY = e.originalEvent.touches[0].clientY - startY;
   const scrollAmount = 100; // 스크롤 감도 조절
-
-  if (startX - deltaX > 100 || deltaX - startX > 100) {
-    return;
-  }
 
   if (deltaY > 0) {
     idx = Math.max(idx - 1, 0);
   } else {
     idx = Math.min(idx + 1, inner.length - 1);
   }
-
-  $("html,body")
-    .stop()
-    .animate(
-      {
-        scrollTop: $(inner[idx]).offset().top, // 다음 페이지의 시작 위치로 스크롤
-      },
-      600,
-      function () {
-        isScrolling = false;
-      }
-    );
+  if (startX - deltaX < 50 || deltaX - startX < 50) {
+    $("html,body")
+      .stop()
+      .animate(
+        {
+          scrollTop: $(inner[idx]).offset().top, // 다음 페이지의 시작 위치로 스크롤
+        },
+        600,
+        function () {
+          isScrolling = false;
+        }
+      );
+  }
 
   // 스크롤 감쇠
   setTimeout(function () {
