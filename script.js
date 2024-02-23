@@ -54,7 +54,7 @@ $(window).on("touchmove", function (e) {
   } else if (deltaY < -10) {
     idx = Math.min(idx + 1, inner.length - 1);
   } else {
-    return;
+    preventDefault();
   }
 
   $("html,body")
