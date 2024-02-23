@@ -48,25 +48,27 @@ $(window).on("touchmove", function (e) {
   const deltaY = e.originalEvent.touches[0].scrollY - startY;
   const scrollAmount = 100; // 스크롤 감도 조절
 
-  if (startX - deltaX < 30 || deltaX - startX < 30) {
-    if (deltaY > 0) {
-      idx = Math.max(idx - 1, 0);
-    } else {
-      idx = Math.min(idx + 1, inner.length - 1);
-    }
-
-    $("html,body")
-      .stop()
-      .animate(
-        {
-          scrollTop: $(inner[idx]).offset().top, // 다음 페이지의 시작 위치로 스크롤
-        },
-        600,
-        function () {
-          isScrolling = false;
-        }
-      );
+  // if (startX - deltaX < 30 || deltaX - startX < 30) {
+  if (deltaY > 10) {
+    idx = Math.max(idx - 1, 0);
+  } else if (deltaY < -10) {
+    idx = Math.min(idx + 1, inner.length - 1);
+  } else {
+    return;
   }
+
+  $("html,body")
+    .stop()
+    .animate(
+      {
+        scrollTop: $(inner[idx]).offset().top, // 다음 페이지의 시작 위치로 스크롤
+      },
+      600,
+      function () {
+        isScrolling = false;
+      }
+    );
+  // }
 
   // 스크롤 감쇠
   setTimeout(function () {
