@@ -50,7 +50,7 @@ $(window).on("touchmove", function (e) {
 
   const scrollDistance = deltaY;
 
-  if (scrollDistance > inner[idx].clientHeight / 4) {
+  if (scrollDistance > inner[idx].clientHeight / 40) {
     idx = Math.max(idx - 1, 0);
   } else if (-scrollDistance > $(inner[idx]).clientHeight / 4) {
     idx = Math.min(idx + 1, inner.length - 1);
