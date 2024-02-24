@@ -38,7 +38,6 @@ const inner = select.querySelectorAll(".page1, .page2, .page3, .page4");
 $(window).on("touchstart", function (e) {
   startX = e.originalEvent.touches[0].scrollX;
   startY = e.originalEvent.touches[0].scrollY;
-  startScroll = ScrollTop;
 });
 
 $(window).on("touchmove", function (e) {
@@ -49,7 +48,7 @@ $(window).on("touchmove", function (e) {
   const deltaY = e.originalEvent.touches[0].scrollY - startY;
   const scrollAmount = 100; // 스크롤 감도 조절
 
-  const scrollDistance = startScroll - ScrollTop;
+  const scrollDistance = deltaY;
 
   if (scrollDistance > $(inner[idx]).clientHeight / 4) {
     idx = Math.max(idx - 1, 0);
@@ -58,6 +57,10 @@ $(window).on("touchmove", function (e) {
   } else {
     idx = idx;
   }
+
+  console.log(scrollDistance);
+  console.log(startY);
+  console.log(e.originalEvent.touches.scrollY);
 
   $("html,body")
     .stop()
