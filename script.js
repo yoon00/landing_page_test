@@ -48,11 +48,12 @@ $(window).on("touchmove", function (e) {
   const deltaY = e.originalEvent.touches[0].clientY - startY;
   const scrollAmount = 100; // 스크롤 감도 조절
 
-  const scrollDistance = deltaY;
+  const scrollDistanceUp = -deltaY;
+  const scrollDistanceDown = deltaY;
 
-  if (scrollDistance > inner[idx].clientHeight / 40) {
+  if (scrollDistanceDown > inner[idx].clientHeight / 40) {
     idx = Math.max(idx - 1, 0);
-  } else if (-scrollDistance > $(inner[idx]).clientHeight / 4) {
+  } else if (scrollDistanceUp > $(inner[idx]).clientHeight / 4) {
     idx = Math.min(idx + 1, inner.length - 1);
   } else {
     idx = idx;
