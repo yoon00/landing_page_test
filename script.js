@@ -45,11 +45,9 @@ $(window).on("touchmove", function (e) {
   isScrolling = true;
 
   const deltaX = e.originalEvent.touches[0].cllientX - startX;
-  const deltaY = e.originalEvent.touches[0].clientY - startY;
+  const scrollDistanceDown = e.originalEvent.touches[0].clientY - startY;
+  const scrollDistanceUp = startY - e.originalEvent.touches[0].clientY;
   const scrollAmount = 100; // 스크롤 감도 조절
-
-  const scrollDistanceUp = -deltaY;
-  const scrollDistanceDown = deltaY;
 
   if (scrollDistanceDown > inner[idx].clientHeight / 40) {
     idx = Math.max(idx - 1, 0);
