@@ -51,12 +51,12 @@ $(window).on("touchmove", function (e) {
 
   const scrollDistance = startScroll - ScrollTop;
 
-  if (scrollDistance > $(inner[idx]).scrollLeft / 2) {
+  if (scrollDistance > $(inner[idx]).scrollLeft / 4) {
     idx = Math.max(idx - 1, 0);
-  } else if (scrollDistance < $(inner[idx]).scrollLeft / 2) {
+  } else if (-scrollDistance > $(inner[idx]).scrollLeft / 4) {
     idx = Math.min(idx + 1, inner.length - 1);
   } else {
-    return;
+    idx = idx;
   }
 
   $("html,body")
