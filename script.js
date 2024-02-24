@@ -51,7 +51,7 @@ $(window).on("touchmove", function (e) {
 
   if (scrollDistanceDown > inner[idx].clientHeight / 40) {
     idx = Math.max(idx - 1, 0);
-  } else if (scrollDistanceUp > $(inner[idx]).clientHeight / 4) {
+  } else if (scrollDistanceUp > $(inner[idx]).clientHeight / 40) {
     idx = Math.min(idx + 1, inner.length - 1);
   } else {
     idx = idx;
