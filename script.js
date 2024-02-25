@@ -50,9 +50,9 @@ $(window).on("touchmove", function (e) {
   const htmlFontSize = parseFloat($("html").css("font-size"));
   const remScrollDistance = scrollDistance / htmlFontSize;
   const remInnerHeight = inner[idx].clientHeight / htmlFontSize;
-  if (remScrollDistance > remInnerHeight / 4) {
+  if (remScrollDistance > remInnerHeight / 6) {
     idx = Math.max(idx - 1, 0);
-  } else if (-remScrollDistance > remInnerHeight / 4) {
+  } else if (-remScrollDistance > remInnerHeight / 6) {
     idx = Math.min(idx + 1, inner.length - 1);
   } else {
     idx = idx;
