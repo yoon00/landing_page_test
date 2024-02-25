@@ -84,11 +84,6 @@
   --background-color: #090a0d;
 }
 
-html,
-body {
-  scroll-behavior: smooth;
-}
-
 /* 모바일 수평 스크롤 금지 */
 html,
 body {
