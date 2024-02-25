@@ -40,27 +40,26 @@ $(window).on("touchstart", function (e) {
   startY = e.originalEvent.touches[0].clientY;
 });
 
-$(window).on("touched", function (e) {
+$(window).on("touchmove", function (e) {
   if (isScrolling) return; // 이미 스크롤 중이면 무시
   isScrolling = true;
 
-  const deltaX = e.originalEvent.touches[0].cllientX - startX;
-  const scrollDistance = e.originalEvent.touches[0].clientY - startY;
+  const scrollDistance = e.originalEvent.changedTouches[0].clientY - startY;
   const scrollAmount = 100; // 스크롤 감도 조절
 
   const htmlFontSize = parseFloat($("html").css("font-size"));
   const remScrollDistance = scrollDistance / htmlFontSize;
-
-  if (scrollDistance > inner[idx].clientHeight / 4) {
+  const remInnerHeight = inner[idx].clientHeight / htmlFontSize;
+  if (remScrollDistance > remInnerHeight / 4) {
     idx = Math.max(idx - 1, 0);
-  } else if (-scrollDistance > inner[idx].clientHeight / 4) {
+  } else if (-remScrollDistance > remInnerHeight / 4) {
     idx = Math.min(idx + 1, inner.length - 1);
   } else {
     idx = idx;
   }
 
-  console.log(scrollDistance);
-  console.log(inner[idx].clientHeight / 4);
+  console.log(remScrollDistance);
+  console.log(remInnerHeight / 4);
   $("html,body")
     .stop()
     .animate(
