@@ -63,7 +63,7 @@ $(window).on("touchmove", function (e) {
     .stop()
     .animate(
       {
-        scrollTop: $(inner[idx]).offset().top, // 다음 페이지의 시작 위치로 스크롤
+        scrollTop: $(inner[idx]).offset().top / htmlFontSize, // 다음 페이지의 시작 위치로 스크롤
       },
       600,
       function () {
