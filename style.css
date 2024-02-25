@@ -84,8 +84,14 @@
   --background-color: #090a0d;
 }
 
+html,
+body {
+  scroll-behavior: smooth;
+}
+
 /* 모바일 수평 스크롤 금지 */
-html, body {
+html,
+body {
   overflow-x: hidden;
 }
 
@@ -98,7 +104,7 @@ body {
 .background {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; 
+  overflow-x: hidden;
   background-attachment: scroll;
   background-color: #090a0d;
   max-width: fit-content;
@@ -109,7 +115,7 @@ body {
 }
 
 /*page1 start*/
-.page1{
+.page1 {
   background-image: url(img/page1_background.png);
   background-size: cover;
   background-repeat: no-repeat;
@@ -350,16 +356,16 @@ body {
   margin-right: 0.313rem;
 }
 
-#figma_logo{
-  margin-left: 0.75rem; 
+#figma_logo {
+  margin-left: 0.75rem;
 }
 
-#notion_logo{
+#notion_logo {
   margin-left: 0.563rem;
 }
 
 #github_logo {
- margin-left: 0.563rem;
+  margin-left: 0.563rem;
 }
 
 #team_study_head {
@@ -586,14 +592,14 @@ body {
 .image {
   position: absolute;
   margin-left: 1.313rem;
-  width:1.25rem;
-  height:1.25rem;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .image_1 {
   margin-left: 1.313rem;
-  width:1.25rem;
-  height:1.25rem;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .text {
@@ -614,7 +620,7 @@ body {
   background-repeat: no-repeat;
 }
 
-.page4_title > p{
+.page4_title > p {
   text-align: left;
   font-family: "OpenSans"; /*타이틀 폰트*/
   font-weight: 600;
@@ -725,7 +731,7 @@ body {
   border-left-style: solid;
 }
 
-.page4_plus_content > p{
+.page4_plus_content > p {
   font-family: "NotoSansKR";
   font-weight: 600;
   font-size: 0.75rem;
@@ -733,7 +739,7 @@ body {
   color: rgba(255, 255, 255, 0.84);
 }
 
-.page4_plus_content > p > span{
+.page4_plus_content > p > span {
   font-size: 0.625rem;
 }
 /*page4 end*/
