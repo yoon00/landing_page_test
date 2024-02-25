@@ -29,7 +29,7 @@ window.addEventListener("scroll", function () {
 });
 
 let idx = 0;
-let startX, startY, startScroll;
+let startY;
 let isScrolling = false;
 
 const select = document.querySelector(".background");
@@ -40,68 +40,38 @@ $(window).on("touchstart", function (e) {
   startY = e.originalEvent.touches[0].clientY;
 });
 
-let lastScrollTop = 0;
-
 $(window).on("touchmove", function (e) {
-  if (isScrolling) return;
+  if (isScrolling) return; // 이미 스크롤 중이면 무시
   isScrolling = true;
 
-  const currentScrollTop = $(this).scrollTop();
-  const deltaY = currentScrollTop - lastScrollTop;
+  const scrollDistance = e.originalEvent.changedTouches[0].clientY - startY;
 
-  if (deltaY > 0 && deltaY > $(window).height() / 2) {
-    // 아래로 스크롤할 때
-    $("html, body").animate(
-      { scrollTop: $(window).scrollTop() + $(window).height() },
-      500
-    );
-  } else if (deltaY < 0 && -deltaY > $(window).height() / 2) {
-    // 위로 스크롤할 때
-    $("html, body").animate(
-      { scrollTop: $(window).scrollTop() - $(window).height() },
-      500
-    );
+  const htmlFontSize = parseFloat($("html").css("font-size"));
+  const remScrollDistance = scrollDistance / htmlFontSize;
+  const remInnerHeight = inner[idx].clientHeight / htmlFontSize;
+
+  if (remScrollDistance > remInnerHeight / 60) {
+    idx = Math.max(idx - 1, 0);
+  } else if (-remScrollDistance > remInnerHeight / 60) {
+    idx = Math.min(idx + 1, inner.length - 1);
+  } else {
+    idx = idx;
   }
 
-  lastScrollTop = currentScrollTop;
+  $("html,body")
+    .stop()
+    .animate(
+      {
+        scrollTop: $(inner[idx]).offset().top, // 다음 페이지의 시작 위치로 스크롤
+      },
+      600,
+      function () {
+        isScrolling = false;
+      }
+    );
 
+  // 스크롤 감쇠
   setTimeout(function () {
     isScrolling = false;
-  }, 500); // 스크롤 감지 간격
+  }, 100);
 });
-
-// $(window).on("touchmove", function (e) {
-//   if (isScrolling) return; // 이미 스크롤 중이면 무시
-//   isScrolling = true;
-
-//   const scrollDistance = e.originalEvent.changedTouches[0].clientY - startY;
-//   const scrollAmount = 100; // 스크롤 감도 조절
-
-//   const htmlFontSize = parseFloat($("html").css("font-size"));
-//   const remScrollDistance = scrollDistance / htmlFontSize;
-//   const remInnerHeight = inner[idx].clientHeight / htmlFontSize;
-//   if (remScrollDistance > remInnerHeight / 60) {
-//     idx = Math.max(idx - 1, 0);
-//   } else if (-remScrollDistance > remInnerHeight / 60) {
-//     idx = Math.min(idx + 1, inner.length - 1);
-//   } else {
-//     idx = idx;
-//   }
-
-//   $("html,body")
-//     .stop()
-//     .animate(
-//       {
-//         scrollTop: $(inner[idx]).offset().top, // 다음 페이지의 시작 위치로 스크롤
-//       },
-//       600,
-//       function () {
-//         isScrolling = false;
-//       }
-//     );
-
-//   // 스크롤 감쇠
-//   setTimeout(function () {
-//     isScrolling = false;
-//   }, 100);
-// });
