@@ -74,4 +74,5 @@ $(window).on("touchmove", function (e) {
   setTimeout(function () {
     isScrolling = false;
   }, 100);
+  }, 100);
 });
