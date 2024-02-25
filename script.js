@@ -58,34 +58,20 @@ $(window).on("touchmove", function (e) {
     idx = idx;
   }
 
-  debounce(() => {
-    $("html,body")
-      .stop()
-      .animate(
-        {
-          scrollTop: $(inner[idx]).offset().top, // 다음 페이지의 시작 위치로 스크롤
-        },
-        600,
-        function () {
-          isScrolling = false;
-        }
-      );
-  }, 100);
+  $("html,body")
+    .stop()
+    .animate(
+      {
+        scrollTop: $(inner[idx]).offset().top, // 다음 페이지의 시작 위치로 스크롤
+      },
+      600,
+      function () {
+        isScrolling = false;
+      }
+    );
 
   // 스크롤 감쇠
   setTimeout(function () {
     isScrolling = false;
   }, 100);
 });
-
-function debounce(func, delay) {
-  let timeout;
-  return function () {
-    const context = this;
-    const args = arguments;
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      func.apply(context, args);
-    }, delay);
-  };
-}
