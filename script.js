@@ -70,7 +70,7 @@ $(window).on("touchmove", function (e) {
           isScrolling = false;
         }
       );
-  }, 600);
+  }, 100);
 
   // 스크롤 감쇠
   setTimeout(function () {
