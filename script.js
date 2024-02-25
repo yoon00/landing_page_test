@@ -64,7 +64,7 @@ $(window).on("touchmove", function (e) {
       {
         scrollTop: $(inner[idx]).offset().top, // 다음 페이지의 시작 위치로 스크롤
       },
-      200,
+      50,
       function () {
         isScrolling = false;
       }
