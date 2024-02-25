@@ -14,6 +14,7 @@ const swiper = new Swiper(".swiper", {
   speed: 1500,
 });
 
+//배경 스크롤
 window.addEventListener("scroll", function () {
   const image = document.getElementById("arrow");
   const scrollPosition = window.scrollY;
@@ -73,6 +74,5 @@ $(window).on("touchmove", function (e) {
   // 스크롤 감쇠
   setTimeout(function () {
     isScrolling = false;
-  }, 100);
   }, 100);
 });
