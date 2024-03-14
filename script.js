@@ -1,3 +1,19 @@
+const swiper = new Swiper("#page2_swiper", {
+  // centerSlide
+  slidesPerView: "1.1",
+  centeredSlides: false,
+  spaceBetween: 10,
+
+  //loop
+  loop: false,
+
+  //nextSlide
+  mousewheel: true,
+
+  //slideSpeed
+  speed: 1500,
+});
+
 const swiper_background = new Swiper("#background", {
   direction: "vertical",
 
@@ -14,22 +30,6 @@ const swiper_background = new Swiper("#background", {
 
   //slideSpeed
   speed: 1000,
-});
-
-const swiper = new Swiper("#page2_swiper", {
-  // centerSlide
-  slidesPerView: "1.1",
-  centeredSlides: false,
-  spaceBetween: 10,
-
-  //loop
-  loop: false,
-
-  //nextSlide
-  mousewheel: true,
-
-  //slideSpeed
-  speed: 1500,
 });
 
 window.addEventListener("scroll", function () {
