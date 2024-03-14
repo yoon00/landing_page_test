@@ -1,3 +1,8 @@
+const handleLoad = () => {
+  // window resize 이벤트 호출
+  window.dispatchEvent(new Event("resize"));
+};
+
 const swiper = new Swiper("#page2_swiper", {
   // centerSlide
   slidesPerView: "1.1",
@@ -16,7 +21,6 @@ const swiper = new Swiper("#page2_swiper", {
 
 const swiper_background = new Swiper("#background", {
   direction: "vertical",
-  threshold: 100,
   slidesPerGroup: 1,
   // centerSlide
   slidesPerView: 1,
