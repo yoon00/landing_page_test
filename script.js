@@ -17,6 +17,8 @@ const swiper_background = new Swiper("#background", {
 
   slidesOffsetBefore: 0,
   slidesOffsetAfeter: 0,
+
+  freeMode: false,
 });
 
 const swiper = new Swiper("#page2_swiper", {
