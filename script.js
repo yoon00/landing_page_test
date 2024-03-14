@@ -18,12 +18,8 @@ const swiper_background = new Swiper("#background", {
   slidesOffsetBefore: 0,
   slidesOffsetAfeter: 0,
 
-  freeMode: false,
-
-  snap: {
-    // 스냅 포인트
-    snapToSlides: true,
-  },
+  observer: true,
+  observeParents: true,
 });
 
 const swiper = new Swiper("#page2_swiper", {
