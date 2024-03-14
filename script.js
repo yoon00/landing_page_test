@@ -19,7 +19,7 @@ const swiper_background = new Swiper("#background", {
 
   // centerSlide
   slidesPerView: 1,
-  centeredSlides: false,
+  centeredSlides: true,
   spaceBetween: 0,
 
   //loop
