@@ -13,9 +13,7 @@ const swiper_background = new Swiper("#background", {
   mousewheel: true,
 
   //slideSpeed
-  speed: 1500,
-
-  freeMode: true,
+  speed: 1000,
 });
 
 const swiper = new Swiper("#page2_swiper", {
