@@ -102,7 +102,6 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background-attachment: scroll;
   background-color: #090a0d;
   max-width: fit-content;
   top: 0;
