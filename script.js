@@ -22,6 +22,8 @@ const swiper_background = new Swiper("#background", {
   centeredSlides: false,
   spaceBetween: 0,
   touchMoveStopPropagation: true,
+  preventInteractionOnTransition: true,
+  touchStartPreventDefault: false,
 
   //loop
   loop: false,
