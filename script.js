@@ -45,4 +45,9 @@ const swiper_background = new Swiper("#background", {
 
   //slideSpeed
   speed: 1000,
+
+  if(isScrolling) {
+    _this.isTouched = false;
+    return;
+  },
 });
