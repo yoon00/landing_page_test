@@ -14,23 +14,8 @@ const swiper = new Swiper("#page2_swiper", {
   speed: 1500,
 });
 
-window.addEventListener("scroll", function () {
-  const image = document.getElementById("arrow");
-  const scrollPosition = window.scrollY;
-  const bottomOfPage = document.body.scrollHeight - window.innerHeight;
-
-  if (scrollPosition >= bottomOfPage - 5) {
-    image.style.transition = "visibility 0.1s";
-    image.style.visibility = "hidden";
-  } else {
-    image.style.transition = "visibility 0.1s";
-    image.style.visibility = "visible";
-  }
-});
-
 const swiper_background = new Swiper("#background", {
   direction: "vertical",
-  touchMoveStopPropagation: true,
   slidesPerGroup: 1,
   // centerSlide
   slidesPerView: 1,
@@ -45,9 +30,18 @@ const swiper_background = new Swiper("#background", {
 
   //slideSpeed
   speed: 1000,
+});
 
-  if(isScrolling) {
-    _this.isTouched = false;
-    return;
-  },
+window.addEventListener("scroll", function () {
+  const image = document.getElementById("arrow");
+  const scrollPosition = window.scrollY;
+  const bottomOfPage = document.body.scrollHeight - window.innerHeight;
+
+  if (scrollPosition >= bottomOfPage - 5) {
+    image.style.transition = "visibility 0.1s";
+    image.style.visibility = "hidden";
+  } else {
+    image.style.transition = "visibility 0.1s";
+    image.style.visibility = "visible";
+  }
 });
