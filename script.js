@@ -18,8 +18,10 @@ const swiper_background = new Swiper("#background", {
   direction: "vertical",
   slidesPerGroup: 1,
   // centerSlide
+  slidesPerView: 1,
   centeredSlides: false,
   spaceBetween: 0,
+  touchMoveStopPropagation: true,
 
   //loop
   loop: false,
