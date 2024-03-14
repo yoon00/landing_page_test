@@ -16,7 +16,7 @@ const swiper = new Swiper("#page2_swiper", {
 
 const swiper_background = new Swiper("#background", {
   direction: "vertical",
-  slidesOffsetAfter: 0,
+  slidesPerGroup: 1,
   // centerSlide
   slidesPerView: 1,
   centeredSlides: false,
