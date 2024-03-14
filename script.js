@@ -14,6 +14,9 @@ const swiper_background = new Swiper("#background", {
 
   //slideSpeed
   speed: 500,
+
+  slidesOffsetBefore: 0,
+  slidesOffsetAfeter: 0,
 });
 
 const swiper = new Swiper("#page2_swiper", {
