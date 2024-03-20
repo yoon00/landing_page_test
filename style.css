@@ -422,7 +422,7 @@ body {
 }
 
 .page1_arrow_container {
-  z-index: 60;
+  z-index: 1;
   position: fixed;
   bottom: 13rem;
   left: 0;
