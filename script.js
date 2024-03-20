@@ -21,11 +21,13 @@ const swiper_background = new Swiper("#background", {
   observer: true,
   observeParents: true,
 
-  reachEnd: function () {
-    swiperNext.addClass("swiper-button-disabled");
-    const image = document.getElementById("arrow");
-    image.style.transition = "visibility 0.1s";
-    image.style.visibility = "hidden";
+  on: {
+    reachEnd: function () {
+      swiperNext.addClass("swiper-button-disabled");
+      const image = document.getElementById("arrow");
+      image.style.transition = "visibility 0.1s";
+      image.style.visibility = "hidden";
+    },
   },
 });
 
