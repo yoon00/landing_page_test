@@ -20,6 +20,13 @@ const swiper_background = new Swiper("#background", {
 
   observer: true,
   observeParents: true,
+
+  reachEnd: function () {
+    swiperNext.addClass("swiper-button-disabled");
+    const image = document.getElementById("arrow");
+    image.style.transition = "visibility 0.1s";
+    image.style.visibility = "hidden";
+  },
 });
 
 const swiper = new Swiper("#page2_swiper", {
@@ -38,16 +45,16 @@ const swiper = new Swiper("#page2_swiper", {
   speed: 1500,
 });
 
-window.addEventListener("scroll", function () {
-  const image = document.getElementById("arrow");
-  const scrollPosition = window.scrollY;
-  const bottomOfPage = document.body.scrollHeight - window.innerHeight;
+// window.addEventListener("scroll", function () {
+//   const image = document.getElementById("arrow");
+//   const scrollPosition = window.scrollY;
+//   const bottomOfPage = document.body.scrollHeight - window.innerHeight;
 
-  if (scrollPosition >= bottomOfPage - 5) {
-    image.style.transition = "visibility 0.1s";
-    image.style.visibility = "hidden";
-  } else {
-    image.style.transition = "visibility 0.1s";
-    image.style.visibility = "visible";
-  }
-});
+//   if (scrollPosition >= bottomOfPage - 5) {
+//     image.style.transition = "visibility 0.1s";
+//     image.style.visibility = "hidden";
+//   } else {
+//     image.style.transition = "visibility 0.1s";
+//     image.style.visibility = "visible";
+//   }
+// });
