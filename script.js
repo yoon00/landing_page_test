@@ -22,16 +22,27 @@ const swiper_background = new Swiper("#background", {
   observeParents: true,
 
   on: {
-    reachEnd: function () {
-      const image = document.getElementById("arrow");
-      image.style.transition = "visibility 0.1s";
-      image.style.visibility = "hidden";
-    },
     slideChange: function () {
+      const swiper = this;
       const image = document.getElementById("arrow");
-      image.style.transition = "visibility 0.1s";
-      image.style.visibility = "visible";
+      if (swiper.isEnd) {
+        image.style.transition = "visibility 0.1s";
+        image.style.visibility = "hidden";
+      } else {
+        image.style.transition = "visibility 0.1s";
+        image.style.visibility = "visible";
+      }
     },
+    // reachEnd: function () {
+    //   const image = document.getElementById("arrow");
+    //   image.style.transition = "visibility 0.1s";
+    //   image.style.visibility = "hidden";
+    // },
+    // slideChange: function () {
+    //   const image = document.getElementById("arrow");
+    //   image.style.transition = "visibility 0.1s";
+    //   image.style.visibility = "visible";
+    // },
   },
 });
 
