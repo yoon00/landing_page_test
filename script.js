@@ -27,8 +27,7 @@ const swiper_background = new Swiper("#background", {
       image.style.transition = "visibility 0.1s";
       image.style.visibility = "hidden";
     },
-
-    slidePrevTransitionStart: function () {
+    slideChange: function () {
       const image = document.getElementById("arrow");
       image.style.transition = "visibility 0.1s";
       image.style.visibility = "visible";
