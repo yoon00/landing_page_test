@@ -104,7 +104,6 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
   background-color: #090a0d;
-  max-width: fit-content;
   top: 0;
   left: 0;
   z-index: -1;
